@@ -1,0 +1,28 @@
+@if (editing != null) {
+    <form>
+        <label for="id">id</label>
+        <input type="text" id="id" [(ngModel)]="editing.id" name="id">
+        <label for="name">Nom</label>
+        <input type="text" id="name" [(ngModel)]="editing.name" name="name" required>
+        <label for="color">Couleur</label>
+        <input type="color" id="color" [(ngModel)]="editing.color" name="color" required>
+        <button (click)="stopEdit()" type="button">Annuler</button>
+        <button (click)="addTag()" type="submit">Valider</button>
+    </form>
+}
+<ul>
+    <li>
+        <a (click)="activateEdit()" href="#">Nouvelle étiquette</a>
+    </li>
+    @for (tag of tags; track $index) {
+        <li (dblclick)="activateEdit(tag)">
+            <app-tag [id]="tag.id" [name]="tag.name" [color]="tag.color"/>
+            <button (click)="deleteTag(tag)">Supprimer</button>
+        </li>
+    } @empty {
+        <li>Aucun tag !</li>
+    }
+    <li>
+        <a (click)="activateEdit()" href="#">Nouvelle étiquette</a>
+    </li>
+</ul>
