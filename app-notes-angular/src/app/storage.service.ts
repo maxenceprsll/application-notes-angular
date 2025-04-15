@@ -13,6 +13,9 @@ export class StorageService {
     {id: 1, name: 'Vert', color: '#a8faa8'},
     {id: 2, name: 'Bleu', color: '#bbbbf8'}
   ];
+
+  tagId = this.tags.length;
+
   //notes: Note[] = [];
   notes: Note[] = [
     {id: 0, title: 'Note Rouge', content: 'Je suis rouge...', createdAt: new Date(), updatedAt: new Date(), tags: [this.tags[0]]},
@@ -35,11 +38,11 @@ export class StorageService {
       return;
     }
     this.tags.push({
-      id: id,
+      id: this.tagId++,
       name: name,
       color: color
     });
-  }
+  }  
 
   editTag(id: number, name: string, color: string): void {
     const tag = this.tags.find(tag => tag.id === id);
@@ -51,6 +54,9 @@ export class StorageService {
 
   deleteTag(tag: Tag): void {
     this.tags = this.tags.filter(t => t.id !== tag.id);
+    this.notes.forEach(note => {
+      note.tags = note.tags.filter(t => t.id !== tag.id);
+    });
   }
 
   getNotes(): Note[] {

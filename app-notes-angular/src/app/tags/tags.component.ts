@@ -14,7 +14,6 @@ export class TagsComponent {
 
   loaded: boolean = false;
   tags: Tag[] = [];
-  lastTagId: number = 0;
   editing: Tag | null = null;
 
   constructor(private storageService: StorageService) {}
@@ -31,7 +30,7 @@ export class TagsComponent {
     this.loaded = true;
   }
 
-  activateEdit(tag: Tag = {id: this.lastTagId + 1, name: "nom", color: "#000"}) {
+  activateEdit(tag: Tag = {id: -1, name: "nom", color: "#000"}) {
     this.editing = {id: tag.id, name: tag.name, color: tag.color};
     return false;
   }
@@ -50,7 +49,6 @@ export class TagsComponent {
   addTag() {
     if (this.editing) {
       this.storageService.addTag(this.editing.id, this.editing.name, this.editing.color);
-      this.lastTagId = this.editing.id;
       this.loaded = false;
       this.tags = this.storageService.getTags();
       this.editing = null;
