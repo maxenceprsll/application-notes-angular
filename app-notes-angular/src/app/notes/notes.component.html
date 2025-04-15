@@ -3,7 +3,7 @@
         <ul>
             @for (tag of tags; track $index) {
                 <li class="tag-item">
-                    <label>
+                    <label [style.color]="tag.color">
                         <input type="checkbox" (change)="toggleTagFilter(tag)" [checked]="isTagSelected(tag)" />
                         {{ tag.name }}
                     </label>
@@ -18,15 +18,20 @@
     
     <div class="notes-list">
         @for (note of filteredNotes; track $index) {
-            <div class="note-item">
+            <div class="note-item" (click)="selectNote(note)">
                 <h4>{{ note.title }}</h4>
-                <small>Tags: 
+                @if (note.content) {
+                    <p>{{ getShortContent(note.content) }}</p>
+                } @else {
+                    <p>Note vide...</p>
+                }
+                <small>Créée le {{ getDateFormated(note.createdAt) }}, 
+                Modifiée le {{ getDateFormated(note.updatedAt) }}</small>
+                <div id="tags">
                     @for (tag of note.tags; track $index) {
-                        <span>{{ tag.name }}</span>
-                    } @empty {
-                        Aucun
+                        <span [style.background-color]="tag.color">{{ tag.name }}</span>
                     }
-                </small>
+                </div>
             </div>
         } @empty {
             <p>Aucune note</p>

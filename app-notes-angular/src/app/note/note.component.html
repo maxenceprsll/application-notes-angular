@@ -1,0 +1,16 @@
+@if (note) {
+    <div class="note">
+        <input [(ngModel)]="note.title" placeholder="Titre de la note" />
+        <textarea [(ngModel)]="note.content" placeholder="Contenu de la note"></textarea>
+        <div class="tags">
+            @for (tag of tags; track $index) {
+                <label [style.color]="tag.color">
+                    <input type="checkbox" (change)="toggleTag(tag)" [checked]="isTagSelected(tag)" />
+                    {{ tag.name }}
+                </label>
+            }
+        </div>
+    </div>
+} @else {
+    <p>Aucune note trouvée</p>
+}

@@ -79,6 +79,20 @@
                 font-size: 12px;
                 color: #888;
             }
+
+            div#tags {
+                margin-top: 10px;
+                display: flex;
+                flex-wrap: wrap;
+
+                span {
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                    margin-right: 5px;
+                    font-size: 12px;
+                    color: #333;
+                }
+            }
         }
 
         p {

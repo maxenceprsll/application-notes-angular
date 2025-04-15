@@ -72,4 +72,17 @@ export class StorageService {
   deleteNote(note: Note): void {
     this.notes = this.notes.filter(n => n.id !== note.id);
   }
+
+  getNote(id: number): Note | undefined {
+    return this.notes.find(note => note.id === id);
+  }
+
+  updateNote(note: Note): void {
+    note.updatedAt = new Date();
+
+    const index = this.notes.findIndex(n => n.id === note.id);
+    if (index !== -1) {
+      this.notes[index] = note;
+    }
+  }
 }
