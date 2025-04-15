@@ -7,8 +7,21 @@ import { Note } from './note';
 })
 export class StorageService {
 
-  tags: Tag[] = [];
-  notes: Note[] = [];
+  //tags: Tag[] = [];
+  tags: Tag[] = [
+    {id: 0, name: 'Rouge', color: '#d69e9e'},
+    {id: 1, name: 'Vert', color: '#a8faa8'},
+    {id: 2, name: 'Bleu', color: '#bbbbf8'}
+  ];
+  //notes: Note[] = [];
+  notes: Note[] = [
+    {id: 0, title: 'Note Rouge', content: 'Je suis rouge...', createdAt: new Date(), updatedAt: new Date(), tags: [this.tags[0]]},
+    {id: 1, title: 'Note Verte', content: 'Je suis verte...', createdAt: new Date(), updatedAt: new Date(), tags: [this.tags[1]]},
+    {id: 2, title: 'Note Bleue', content: 'Je suis bleue...', createdAt: new Date(), updatedAt: new Date(), tags: [this.tags[2]]},
+    {id: 3, title: 'Note Rouge et Verte', content: 'Je suis rouge et verte...', createdAt: new Date(), updatedAt: new Date(), tags: [this.tags[0], this.tags[1]]},
+    {id: 4, title: 'Note Rouge et Bleue', content: 'Je suis rouge et bleue...', createdAt: new Date(), updatedAt: new Date(), tags: [this.tags[0], this.tags[2]]},
+    {id: 5, title: 'Note Verte et Bleue', content: 'Je suis verte et bleue...', createdAt: new Date(), updatedAt: new Date(), tags: [this.tags[1], this.tags[2]]},
+  ];
 
   constructor() { }
 
