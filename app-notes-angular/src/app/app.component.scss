@@ -1,5 +1,28 @@
-nav {
+header {
+    display: flex;
+    justify-content: space-between;
     background-color: #333;
     color: #dfdfdf;
     padding: 10px;
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        button {
+            background-color: #444;
+            color: #dfdfdf;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin: 5px;
+            border-radius: 5px;
+            min-width: 100px;
+    
+            &:hover {
+                background-color: #555;
+            }
+        }
+    }
 }
