@@ -1,1 +1,35 @@
-<p>notes works!</p>
+<div id="container">
+    <div class="tags-filter">
+        <ul>
+            @for (tag of tags; track $index) {
+                <li class="tag-item">
+                    <label>
+                        <input type="checkbox" (change)="toggleTagFilter(tag)" [checked]="isTagSelected(tag)" />
+                        {{ tag.name }}
+                    </label>
+                </li>
+            } @empty {
+                <li>Aucun tag</li>
+            }
+        </ul>
+    </div>
+    
+    <button (click)="addNote()" class="add-note-button">Ajouter une note</button>
+    
+    <div class="notes-list">
+        @for (note of filteredNotes; track $index) {
+            <div class="note-item">
+                <h4>{{ note.title }}</h4>
+                <small>Tags: 
+                    @for (tag of note.tags; track $index) {
+                        <span>{{ tag.name }}</span>
+                    } @empty {
+                        Aucun
+                    }
+                </small>
+            </div>
+        } @empty {
+            <p>Aucune note</p>
+        }
+    </div>
+</div>

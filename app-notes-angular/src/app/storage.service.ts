@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Tag } from './tag';
+import { Note } from './note';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { Tag } from './tag';
 export class StorageService {
 
   tags: Tag[] = [];
+  notes: Note[] = [];
 
   constructor() { }
 
@@ -36,5 +38,38 @@ export class StorageService {
 
   deleteTag(tag: Tag): void {
     this.tags = this.tags.filter(t => t.id !== tag.id);
+  }
+
+  getNotes(): Note[] {
+    return this.notes;
+  }
+
+  addNote(id: number, title: string, content: string, tags: Tag[]): void {
+    if (this.notes.some(note => note.id === id)) {
+      this.editNote(id, title, content, tags);
+      return;
+    }
+    this.notes.push({
+      id: id,
+      title: title,
+      content: content,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      tags: []
+    });
+  }
+
+  editNote(id: number, title: string, content: string, tags: Tag[]): void {
+    const note = this.notes.find(note => note.id === id);
+    if (note) {
+      note.title = title;
+      note.content = content;
+      note.updatedAt = new Date();
+      note.tags = tags;
+    }
+  }
+
+  deleteNote(note: Note): void {
+    this.notes = this.notes.filter(n => n.id !== note.id);
   }
 }
