@@ -1,98 +1,104 @@
-
-form {
+#tags {
     display: flex;
-    max-width: 500px;
     flex-direction: column;
     gap: 1rem;
     padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
 
-    label {
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-    }
-
-    input[type="text"],
-    input[type="color"] {
-        padding: 0.5rem;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 1rem;
-    }
-
-    button {
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 4px;
-        font-size: 1rem;
-        cursor: pointer;
-        max-width: 100px;
-        transition: background-color 0.3s;
-
-        &:first-of-type {
-            background-color: #f44336;
-            color: #fff;
-
-            &:hover {
-                background-color: #d32f2f;
-            }
-        }
-
-        &:last-of-type {
-            background-color: #4caf50;
-            color: #fff;
-
-            &:hover {
-                background-color: #388e3c;
-            }
-        }
-    }
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-
-    li {
+    form {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0.5rem;
-        border-bottom: 1px solid #ddd;
-
-        &:last-child {
-            border-bottom: none;
-        }
-
-        a {
-            color: #007bff;
-            text-decoration: none;
+        max-width: 500px;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    
+        label {
             font-weight: bold;
-
-            &:hover {
-                text-decoration: underline;
-            }
+            margin-bottom: 0.5rem;
         }
-
+    
+        input[type="text"],
+        input[type="color"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+    
         button {
-            padding: 0.3rem 0.6rem;
+            padding: 0.5rem 1rem;
             border: none;
             border-radius: 4px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             cursor: pointer;
-            background-color: #f44336;
-            color: #fff;
+            max-width: 100px;
             transition: background-color 0.3s;
-
-            &:hover {
-                background-color: #d32f2f;
+    
+            &:first-of-type {
+                background-color: #f44336;
+                color: #fff;
+    
+                &:hover {
+                    background-color: #d32f2f;
+                }
+            }
+    
+            &:last-of-type {
+                background-color: #4caf50;
+                color: #fff;
+    
+                &:hover {
+                    background-color: #388e3c;
+                }
             }
         }
     }
-
-    li app-tag {
-        margin-right: 1rem;
+    
+    ul {
+        list-style: none;
+        padding: 0;
+    
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem;
+            border-bottom: 1px solid #ddd;
+    
+            &:last-child {
+                border-bottom: none;
+            }
+    
+            a {
+                color: #007bff;
+                text-decoration: none;
+                font-weight: bold;
+    
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+    
+            button {
+                padding: 0.3rem 0.6rem;
+                border: none;
+                border-radius: 4px;
+                font-size: 0.9rem;
+                cursor: pointer;
+                background-color: #f44336;
+                color: #fff;
+                transition: background-color 0.3s;
+    
+                &:hover {
+                    background-color: #d32f2f;
+                }
+            }
+        }
+    
+        li app-tag {
+            margin-right: 1rem;
+        }
     }
 }
